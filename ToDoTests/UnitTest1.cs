@@ -8,11 +8,11 @@ namespace ToDoTests
     public class ProgramTests
     {
         [Test]
-        public void ReadTransaction_CorrectTransactionId_ReturnsATransactionObjectWithACorrectId()
+        public void ReadTransaction_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
             string id = "123";
 
-            Transaction result = ReadTransaction(id);
+            Note result = ReadNote(id);
 
             Assert.That(result.Id, Is.EqualTo("123"));
         }
