@@ -43,8 +43,8 @@ namespace ToDoTests
             {
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                EstimatedCompletion = "2023-01-01",
-                DateOfCompletion = "",
+                EstimatedCompletion = DateTime.Parse("2023-01-01"),
+                DateOfCompletion = null,
                 Link = "",
                 Mentions = null,
                 Priority = Priority.High
@@ -67,8 +67,8 @@ namespace ToDoTests
             {
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                EstimatedCompletion = "2023-01-01",
-                DateOfCompletion = "",
+                EstimatedCompletion = DateTime.Parse("2023-01-01"),
+                DateOfCompletion = null,
                 Link = "",
                 Mentions = null,
                 Priority = Priority.High
@@ -86,14 +86,14 @@ namespace ToDoTests
         [Test]
         public void ModifyEstimatedCompletion_NewExtimatedCompletion_SuccesfullyModifiesTheNote()
         {
-            string newExtimatedCompletion = "2050-01-01";
+            DateTime newExtimatedCompletion = DateTime.Parse("2050-01-01");
 
             var note = new Note()
             {
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                EstimatedCompletion = "2023-01-01",
-                DateOfCompletion = "",
+                EstimatedCompletion = DateTime.Parse("2023-01-01"),
+                DateOfCompletion = null,
                 Link = "",
                 Mentions = null,
                 Priority = Priority.High
@@ -107,7 +107,7 @@ namespace ToDoTests
 
             Assert.That(result.EstimatedCompletion, Is.EqualTo(newExtimatedCompletion));
         }
-        //!Estimated date < creating date
+
         [Test]
         public void CreateNewNote_EstimatedDateLessThanCreatingDate_ThrowExceptionIfLower()
         {
@@ -115,17 +115,36 @@ namespace ToDoTests
             {
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                EstimatedCompletion = "2020-01-01",
-                DateOfCompletion = "",
+                EstimatedCompletion = DateTime.Parse("2020-01-01"),
+                DateOfCompletion = null,
                 Link = "",
                 Mentions = null,
                 Priority = Priority.High
             };
 
             var controller = new ToDoController();
-            
-            Assert.Catch(() => { controller.NewNote(note);});
 
+            Assert.Catch(() => { controller.NewNote(note); });
+        }
+
+        [Test]
+        public void ModifyEstimatedCompletion_EstimatedDateLessThanCreatingDate_ThrowExceptionIfLower()
+        {
+            var note = new Note()
+            {
+                Description = "Money expenses",
+                Text = "To be paid to Kentucky Chicken Wings: 2000€",
+                EstimatedCompletion = DateTime.Parse("2030-01-01"),
+                DateOfCompletion = null,
+                Link = "",
+                Mentions = null,
+                Priority = Priority.High
+            };
+
+            var controller = new ToDoController();
+            controller.NewNote(note);
+
+            Assert.Catch(() => {  controller.ModifyEstimatedCompletion(note.ID, DateTime.Parse("1999-12-31")); });
         }
     }
 }

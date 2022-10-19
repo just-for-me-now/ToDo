@@ -29,6 +29,10 @@ namespace ToDo.Controllers
 
         public void NewNote(Note nota)
         {
+            if(nota.EstimatedCompletion < nota.CreatedDate)
+            {
+                throw new ArgumentOutOfRangeException("Estimated completion should be after creation date.");
+            }
             notes.Add(nota);
         }
 
@@ -54,7 +58,7 @@ namespace ToDo.Controllers
             }
         }
 
-        public void ModifyEstimatedCompletion(int id, string newExtimatedCompletion)
+        public void ModifyEstimatedCompletion(int id, DateTime newExtimatedCompletion)
         {
             foreach (Note note in notes)
             {
