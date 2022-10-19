@@ -1,14 +1,20 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using System;
+using System.ComponentModel.Design;
 
 namespace ToDoTests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    public class ProgramTests
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void ReadTransaction_CorrectTransactionId_ReturnsATransactionObjectWithACorrectId()
         {
+            string id = "123";
+
+            Transaction result = ReadTransaction(id);
+
+            Assert.That(result.Id, Is.EqualTo("123"));
         }
     }
 }
