@@ -8,9 +8,37 @@ namespace ToDo.Controllers
 {
     public class ToDoController
     {
+        IList<Note> notes;
+
+        public ToDoController()
+        {
+            notes = new List<Note>();
+        }
+
         public Note ReadNote(string ID)
         {
-            return new Note() { ID = ID};
+            foreach(Note note in notes)
+            {
+                if(note.ID == ID)
+                {
+                    return note;
+                }
+            }
+            return null;
+        }
+
+        public bool NewNote( string id )
+        {
+            foreach (Note note in notes)
+            {
+                if (note.ID == id)
+                {
+                    return false;
+                }
+            }
+
+            notes.Add(new Note() {ID = id});
+            return true;
         }
     }
 }

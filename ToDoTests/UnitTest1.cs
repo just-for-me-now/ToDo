@@ -12,15 +12,17 @@ namespace ToDoTests
         [Test]
         public void ReadNote_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
-            string ID = "123";
 
+            string ID = "123";
             var controller = new ToDoController();
+            controller.NewNote("123");
 
             Note result = controller.ReadNote(ID);
             
             Assert.That(result.ID, Is.EqualTo("123"));
         }
 
+        [Test]
         public void ReadNote_IncorrectNoteId_ReturnsMessage()
         {
             string ID = "22";
