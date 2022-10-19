@@ -76,5 +76,16 @@ namespace ToDo.Controllers
                 }
             }
         }
+
+        public void ModifyPriority(int id, Priority newPriority)
+        {
+            foreach(Note note in notes)
+            {
+                if(note.ID == id)
+                {
+                    note.Priority = newPriority;
+                }
+            }
+        }
     }
 }
