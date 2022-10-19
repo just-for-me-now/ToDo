@@ -14,17 +14,22 @@ namespace ToDo
     }
     public class Note
     {
-        public string ID { get; set; }
+        private static int id = 1;
+        public int ID { get; }
         public string Description { get; set; }
         public string Text { get; set; }
-        public string Created { get; set; }
+        public string Created { get; }
         public string EstimatedCompletion { get; set; }
         public string DateOfCompletion { get; set; }
         public string Link { get; set; }
         public List<string> Mentions { get; set; }
         public Priority Priority { get; set; }
         
-
+        public Note()
+        {
+            this.ID = ++id;
+            this.Created = DateTime.Now.ToString();
+        }
 
         //ID = "123",
         //        Description = "Money expenses",

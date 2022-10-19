@@ -10,10 +10,6 @@ namespace ToDo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Buenos días");
-
-            Note nota = new Note() { ID = "123" };
-
             Console.ReadKey();
         }
     }

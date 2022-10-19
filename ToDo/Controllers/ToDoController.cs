@@ -15,7 +15,7 @@ namespace ToDo.Controllers
             notes = new List<Note>();
         }
 
-        public Note ReadNote(string ID)
+        public Note ReadNote(int ID)
         {
             foreach(Note note in notes)
             {
@@ -27,30 +27,29 @@ namespace ToDo.Controllers
             return null;
         }
 
-        //public bool NewNote( string id )
-        //{
-        //    foreach (Note note in notes)
-        //    {
-        //        if (note.ID == id)
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //    notes.Add(new Note() {ID = id});
-        //    return true;
-        //}
         public void NewNote(Note nota)
         {
             notes.Add(nota);
         }
-        public void ModifyDescription(string ID, string description)
+
+        public void ModifyDescription(int ID, string newDescription)
         {
             foreach (Note note in notes)
             {
                 if (note.ID == ID)
                 {
-                    note.Description = description;
+                    note.Description = newDescription;
+                }
+            }
+        }
+
+        public void ModifyText(int ID, string newText)
+        {
+            foreach (Note note in notes)
+            {
+                if (note.ID == ID)
+                {
+                    note.Text = newText;
                 }
             }
         }

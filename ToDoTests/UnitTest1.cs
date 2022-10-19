@@ -13,19 +13,19 @@ namespace ToDoTests
         public void ReadNote_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
 
-            Note nota = new Note() { ID = "123" };
+            Note nota = new Note();
             var controller = new ToDoController();
             controller.NewNote(nota);
 
             Note result = controller.ReadNote(nota.ID);
             
-            Assert.That(result.ID, Is.EqualTo("123"));
+            Assert.That(result.ID, Is.EqualTo(nota.ID));
         }
 
         [Test]
         public void ReadNote_IncorrectNoteId_ReturnsMessage()
         {
-            string ID = "22";
+            int ID = 22;
 
             var controller = new ToDoController();
 
@@ -41,10 +41,8 @@ namespace ToDoTests
             
             var note = new Note()
             {
-                ID = "123",
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                Created = "2022-01-01",
                 EstimatedCompletion = "2023-01-01",
                 DateOfCompletion = "",
                 Link = "",
@@ -55,8 +53,8 @@ namespace ToDoTests
 
             var controller = new ToDoController();
             controller.NewNote(note);
-            controller.ModifyDescription("123", newDescr);
-            Note result = controller.ReadNote("123");
+            controller.ModifyDescription(note.ID, newDescr);
+            Note result = controller.ReadNote(note.ID);
 
             Assert.That(result.Description, Is.EqualTo(newDescr));
         }
@@ -67,10 +65,8 @@ namespace ToDoTests
 
             var note = new Note()
             {
-                ID = "123",
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                Created = "2022-01-01",
                 EstimatedCompletion = "2023-01-01",
                 DateOfCompletion = "",
                 Link = "",
@@ -81,11 +77,35 @@ namespace ToDoTests
 
             var controller = new ToDoController();
             controller.NewNote(note);
-            controller.ModifyText("123", newText);
-            Note result = controller.ReadNote("123");
+            controller.ModifyText(note.ID, newText);
+            Note result = controller.ReadNote(note.ID);
 
             Assert.That(result.Text, Is.EqualTo(newText));
         }
 
+        [Test]
+        public void ModifyEstimatedCompletion_NewExtimatedCompletion_SuccesfullyModifiesTheNote()
+        {
+            string newExtimatedCompletion = "2050-01-01";
+
+            var note = new Note()
+            {
+                Description = "Money expenses",
+                Text = "To be paid to Kentucky Chicken Wings: 2000€",
+                EstimatedCompletion = "2023-01-01",
+                DateOfCompletion = "",
+                Link = "",
+                Mentions = null,
+                Priority = Priority.High
+            };
+
+
+            var controller = new ToDoController();
+            controller.NewNote(note);
+            controller.ModifyEstimatedCompletion(note.ID, newExtimatedCompletion);
+            Note result = controller.ReadNote(note.ID);
+
+            Assert.That(result.Text, Is.EqualTo(newExtimatedCompletion));
+        }
     }
 }
