@@ -10,6 +10,7 @@ namespace ToDo
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Buenos días");
         }
     }
 }
