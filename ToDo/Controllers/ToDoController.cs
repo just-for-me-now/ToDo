@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDo.DataBaseManager;
 
 namespace ToDo.Controllers
 {
     public class ToDoController
     {
         IList<Note> notes;
+        IDatabaseManager repo;
 
         public ToDoController()
         {

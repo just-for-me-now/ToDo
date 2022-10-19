@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Controllers\ToDoController.cs" />
     <Compile Include="DataBaseManager\DBManager.cs" />
+    <Compile Include="DataBaseManager\DBManager_old.cs" />
+    <Compile Include="DataBaseManager\IDatabaseManager.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

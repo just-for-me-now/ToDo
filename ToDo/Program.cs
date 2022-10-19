@@ -16,7 +16,7 @@ namespace ToDo
             nota.Text = "buenas tardes";
             
           
-            DBManager db = new DBManager();
+            DBManager_old db = new DBManager_old();
             SQLiteConnection conn = db.createConnection();
             db.insertData(conn, nota);
             Console.ReadKey();
