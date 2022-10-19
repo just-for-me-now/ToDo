@@ -11,6 +11,8 @@ namespace ToDo
         static void Main(string[] args)
         {
             Console.WriteLine("Buenos días");
+
+            Console.ReadKey();
         }
     }
 }

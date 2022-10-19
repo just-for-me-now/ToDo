@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using System;
 using System.ComponentModel.Design;
+using ToDo;
+using ToDo.Controllers;
 
 namespace ToDoTests
 {
@@ -10,11 +12,13 @@ namespace ToDoTests
         [Test]
         public void ReadTransaction_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
-            string id = "123";
+            string ID = "123";
 
-            Note result = ReadNote(id);
+            var controller = new ToDoController();
 
-            Assert.That(result.Id, Is.EqualTo("123"));
+            Note result = controller.ReadNote(ID);
+            
+            Assert.That(result.ID, Is.EqualTo("123"));
         }
     }
 }
