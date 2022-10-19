@@ -10,10 +10,7 @@ namespace ToDo.Controllers
     {
         public Note ReadNote(string ID)
         {
-            Note note = new Note();
-            note.ID = ID;   
-
-            return note;
+            return new Note() { ID = ID};
         }
     }
 }
