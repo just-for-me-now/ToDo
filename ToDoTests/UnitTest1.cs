@@ -10,7 +10,7 @@ namespace ToDoTests
     public class ProgramTests
     {
         [Test]
-        public void ReadTransaction_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
+        public void ReadNote_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
             string ID = "123";
 
@@ -19,6 +19,17 @@ namespace ToDoTests
             Note result = controller.ReadNote(ID);
             
             Assert.That(result.ID, Is.EqualTo("123"));
+        }
+
+        public void ReadNote_IncorrectNoteId_ReturnsMessage()
+        {
+            string ID = "22";
+
+            var controller = new ToDoController();
+
+            Note result = controller.ReadNote(ID);
+            //$"{result.ID} does not exist"
+            Assert.That(result, Is.Null);
         }
     }
 }

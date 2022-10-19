@@ -12,6 +12,8 @@ namespace ToDo
         {
             Console.WriteLine("Buenos días");
 
+            Note nota = new Note() { ID = "123" };
+
             Console.ReadKey();
         }
     }
