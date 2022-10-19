@@ -8,9 +8,9 @@ namespace ToDo
 {
     public enum Priority
     {
-        High,
-        Medium,
-        Low
+        High = 0,
+        Medium = 1,
+        Low = 2
     }
     public class Note
     {

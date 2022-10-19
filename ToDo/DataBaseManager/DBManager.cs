@@ -36,19 +36,23 @@ namespace ToDo.DataBaseManager
             cmd.CommandText = tableOne; 
             cmd.ExecuteNonQuery();
         }
-        public void insertData(SQLiteConnection conn)
+        public void insertData(SQLiteConnection conn, Note nota)
         {
-            SQLiteDataReader reader;
+
             SQLiteCommand cmd = conn.CreateCommand();
+            string mentionsSerialized = "";
             // cmd.CommandText = "SHOW TALBES LIKE '%notes%'";
-            cmd.CommandText = "SHOW TABLES LIKE 'notes'";
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
+            //cmd.CommandText = "SHOW TABLES LIKE 'notes'";
+            try
             {
-                string myReader = reader.GetString(0);
+                mentionsSerialized = nota.Mentions.Aggregate("", (string a, string b) => { return a + " " + b; });
+            }
+            catch (Exception)
+            {
 
             }
-            conn.Close();
+            cmd.CommandText = $"INSERT INTO notes VALUES({nota.ID},'{nota.Description}','{nota.Text}','{nota.CreatedDate.ToString()}','{nota.EstimatedCompletion.ToString()}','{nota.DateOfCompletion.ToString()}','{nota.Link}','{mentionsSerialized}',{(int)nota.Priority});";
+            cmd.ExecuteNonQuery();
         }
         //public static bool checkTable(SQLiteConnection conn)
         //{

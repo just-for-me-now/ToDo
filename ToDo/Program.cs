@@ -12,10 +12,13 @@ namespace ToDo
     {
         static void Main(string[] args)
         {
-            Console.ReadKey();
+            var nota = new Note();
+            nota.Text = "buenas tardes";
+            
+          
             DBManager db = new DBManager();
             SQLiteConnection conn = db.createConnection();
-            db.CreateTable(conn);
+            db.insertData(conn, nota);
             Console.ReadKey();
         }
     }
