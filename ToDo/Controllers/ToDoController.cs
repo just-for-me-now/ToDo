@@ -64,7 +64,15 @@ namespace ToDo.Controllers
             {
                 if (note.ID == id)
                 {
-                    note.EstimatedCompletion = newExtimatedCompletion;
+                    if (newExtimatedCompletion<note.CreatedDate)
+                    {
+                        throw new ArgumentOutOfRangeException("Estimated completion should be after creation date.");
+                    }
+                    else
+                    {
+                        note.EstimatedCompletion = newExtimatedCompletion;
+                    }
+                   
                 }
             }
         }
