@@ -107,5 +107,25 @@ namespace ToDoTests
 
             Assert.That(result.EstimatedCompletion, Is.EqualTo(newExtimatedCompletion));
         }
+        //!Estimated date < creating date
+        [Test]
+        public void CreateNewNote_EstimatedDateLessThanCreatingDate_ThrowExceptionIfLower()
+        {
+            var note = new Note()
+            {
+                Description = "Money expenses",
+                Text = "To be paid to Kentucky Chicken Wings: 2000€",
+                EstimatedCompletion = "2020-01-01",
+                DateOfCompletion = "",
+                Link = "",
+                Mentions = null,
+                Priority = Priority.High
+            };
+
+            var controller = new ToDoController();
+            
+            Assert.Catch(() => { controller.NewNote(note);});
+
+        }
     }
 }

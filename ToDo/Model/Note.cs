@@ -18,7 +18,7 @@ namespace ToDo
         public int ID { get; }
         public string Description { get; set; }
         public string Text { get; set; }
-        public string Created { get; }
+        public string CreatedDate { get; }
         public string EstimatedCompletion { get; set; }
         public string DateOfCompletion { get; set; }
         public string Link { get; set; }
@@ -28,7 +28,7 @@ namespace ToDo
         public Note()
         {
             this.ID = ++id;
-            this.Created = DateTime.Now.ToString();
+            this.CreatedDate = DateTime.Now.ToString();
         }
 
         //ID = "123",
