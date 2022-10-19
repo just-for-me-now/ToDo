@@ -53,5 +53,16 @@ namespace ToDo.Controllers
                 }
             }
         }
+
+        public void ModifyEstimatedCompletion(int id, string newExtimatedCompletion)
+        {
+            foreach (Note note in notes)
+            {
+                if (note.ID == id)
+                {
+                    note.EstimatedCompletion = newExtimatedCompletion;
+                }
+            }
+        }
     }
 }

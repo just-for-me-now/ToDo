@@ -105,7 +105,7 @@ namespace ToDoTests
             controller.ModifyEstimatedCompletion(note.ID, newExtimatedCompletion);
             Note result = controller.ReadNote(note.ID);
 
-            Assert.That(result.Text, Is.EqualTo(newExtimatedCompletion));
+            Assert.That(result.EstimatedCompletion, Is.EqualTo(newExtimatedCompletion));
         }
     }
 }
