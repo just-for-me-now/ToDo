@@ -13,11 +13,11 @@ namespace ToDoTests
         public void ReadNote_CorrectNoteId_ReturnsANoteObjectWithACorrectId()
         {
 
-            string ID = "123";
+            Note nota = new Note() { ID = "123" };
             var controller = new ToDoController();
-            controller.NewNote("123");
+            controller.NewNote(nota);
 
-            Note result = controller.ReadNote(ID);
+            Note result = controller.ReadNote(nota.ID);
             
             Assert.That(result.ID, Is.EqualTo("123"));
         }
@@ -38,22 +38,24 @@ namespace ToDoTests
         public void ModifyDescription_NewDescription_SuccesfullyModifiesTheNote()
         {
             string newDescr = "Money spent";
+            
             var note = new Note()
             {
                 ID = "123",
                 Description = "Money expenses",
                 Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                Created = "2020-01-01",
+                Created = "2022-01-01",
                 EstimatedCompletion = "2023-01-01",
                 DateOfCompletion = "",
                 Link = "",
                 Mentions = null,
-                Priority = NotePriorities.High
+                Priority = Priority.High
             };
 
-            var controller = new ToDoController();
-            controller.ModifDescription("123", newDescr);
 
+            var controller = new ToDoController();
+            controller.NewNote(note);
+            controller.ModifyDescription("123", newDescr);
             Note result = controller.ReadNote("123");
 
             Assert.That(result.Description, Is.EqualTo(newDescr));

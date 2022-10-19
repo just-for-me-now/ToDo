@@ -27,18 +27,32 @@ namespace ToDo.Controllers
             return null;
         }
 
-        public bool NewNote( string id )
+        //public bool NewNote( string id )
+        //{
+        //    foreach (Note note in notes)
+        //    {
+        //        if (note.ID == id)
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    notes.Add(new Note() {ID = id});
+        //    return true;
+        //}
+        public void NewNote(Note nota)
+        {
+            notes.Add(nota);
+        }
+        public void ModifyDescription(string ID, string description)
         {
             foreach (Note note in notes)
             {
-                if (note.ID == id)
+                if (note.ID == ID)
                 {
-                    return false;
+                    note.Description = description;
                 }
             }
-
-            notes.Add(new Note() {ID = id});
-            return true;
         }
     }
 }
