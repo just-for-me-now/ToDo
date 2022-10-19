@@ -14,11 +14,13 @@ namespace ToDo
         {
             var nota = new Note();
             nota.Text = "buenas tardes";
-            
-          
-            DBManager_old db = new DBManager_old();
-            SQLiteConnection conn = db.createConnection();
-            db.insertData(conn, nota);
+
+            DBManager manager = new DBManager();
+            manager.requestAllData();
+            //DBManager_old db = new DBManager_old();
+            //SQLiteConnection conn = db.createConnection();
+            //db.insertData(conn, nota);
+
             Console.ReadKey();
         }
     }

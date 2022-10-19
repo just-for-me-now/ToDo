@@ -167,25 +167,25 @@ namespace ToDoTests
             Assert.That(result.Priority, Is.EqualTo(lowPriority));
         }
 
-        [Test]
-        public void Database_exists()
-        {
-            var note = new Note()
-            {
-                Description = "Money expenses",
-                Text = "To be paid to Kentucky Chicken Wings: 2000€",
-                EstimatedCompletion = DateTime.Parse("2030-01-01"),
-                DateOfCompletion = null,
-                Link = "",
-                Mentions = null,
-                Priority = Priority.High
-            };
-            var controller = new ToDoController();
-            controller.NewNote(note);
+        //[Test]
+        //public void Database_exists()
+        //{
+        //    var note = new Note()
+        //    {
+        //        Description = "Money expenses",
+        //        Text = "To be paid to Kentucky Chicken Wings: 2000€",
+        //        EstimatedCompletion = DateTime.Parse("2030-01-01"),
+        //        DateOfCompletion = null,
+        //        Link = "",
+        //        Mentions = null,
+        //        Priority = Priority.High
+        //    };
+        //    var controller = new ToDoController();
+        //    controller.NewNote(note);
 
-            controller =new ToDoController();
-            Note result = controller.ReadNote(note.ID);
-            Assert.That(result, Is.Not.Null);
-        }
+        //    controller =new ToDoController();
+        //    Note result = controller.ReadNote(note.ID);
+        //    Assert.That(result, Is.Not.Null);
+        //}
     }
 }

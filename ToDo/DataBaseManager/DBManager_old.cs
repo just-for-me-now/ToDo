@@ -54,6 +54,10 @@ namespace ToDo.DataBaseManager
             cmd.CommandText = $"INSERT INTO notes VALUES({nota.ID},'{nota.Description}','{nota.Text}','{nota.CreatedDate.ToString()}','{nota.EstimatedCompletion.ToString()}','{nota.DateOfCompletion.ToString()}','{nota.Link}','{mentionsSerialized}',{(int)nota.Priority});";
             cmd.ExecuteNonQuery();
         }
+        public void requestAllData(SQLiteConnection conn)
+        {
+
+        }
         //public static bool checkTable(SQLiteConnection conn)
         //{
         //    SQLiteCommand cmd;
